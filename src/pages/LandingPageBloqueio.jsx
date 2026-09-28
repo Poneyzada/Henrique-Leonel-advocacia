@@ -76,7 +76,7 @@ export default function LandingPageBloqueio() {
             muted
             playsInline
             webkit-playsinline="true"
-            className="w-full h-full object-cover object-center opacity-45 mix-blend-screen scale-105 md:hidden block"
+            className="w-full h-full object-contain object-center opacity-70 mix-blend-screen scale-[0.88] contrast-110 brightness-110 md:hidden block"
           >
             <source src="/hero-mobile.webm" type="video/webm" />
             <source src="/hero-desktop.webm" type="video/webm" />
