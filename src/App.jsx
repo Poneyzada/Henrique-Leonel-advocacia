@@ -16,6 +16,7 @@ import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import ServiceModal from './components/ServiceModal';
+import LeadIntakeModal from './components/LeadIntakeModal';
 
 import LandingPageBloqueio from './pages/LandingPageBloqueio';
 import LandingPagePlanoSaude from './pages/LandingPagePlanoSaude';
@@ -27,6 +28,13 @@ export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('desbloqueio');
   const [viewMode, setViewMode] = useState('main');
+  
+  // Lead Intake Modal States
+  const [intakeOpen, setIntakeOpen] = useState(false);
+  const [intakeService, setIntakeService] = useState('bloqueio');
+  const [intakeOrigin, setIntakeOrigin] = useState('Site Principal');
+  const [intakeLockService, setIntakeLockService] = useState(false);
+
   const mainRef = useRef(null);
 
   // Check URL Path, Query Params or Hash
@@ -103,6 +111,13 @@ export default function App() {
     }
   };
 
+  const handleOpenIntake = ({ service = 'bloqueio', origin = 'Site Principal', lockService = false } = {}) => {
+    setIntakeService(service);
+    setIntakeOrigin(origin);
+    setIntakeLockService(lockService);
+    setIntakeOpen(true);
+  };
+
   // GSAP Context Lifecycle for Main site
   useEffect(() => {
     if (viewMode !== 'main') return;
@@ -143,19 +158,34 @@ export default function App() {
     <div ref={mainRef} className="relative min-h-screen bg-[#FAF8F5] text-[#0D0D12] overflow-x-hidden">
       
       {/* Floating Island Navigation */}
-      <Navbar onOpenServiceModal={handleOpenServiceModal} />
+      <Navbar
+        onOpenServiceModal={handleOpenServiceModal}
+        onOpenIntake={handleOpenIntake}
+      />
 
       {/* Hero Section (100dvh Cinematic Blueprint) */}
-      <Hero onOpenServiceModal={handleOpenServiceModal} />
+      <Hero
+        onOpenServiceModal={handleOpenServiceModal}
+        onOpenIntake={handleOpenIntake}
+      />
 
       {/* About & Pain Points Identification */}
-      <About onOpenServiceModal={handleOpenServiceModal} />
+      <About
+        onOpenServiceModal={handleOpenServiceModal}
+        onOpenIntake={handleOpenIntake}
+      />
 
       {/* Services Carousel ("Trusted Expertise" in Dark Container) */}
-      <ServicesCarousel onOpenServiceModal={handleOpenServiceModal} />
+      <ServicesCarousel
+        onOpenServiceModal={handleOpenServiceModal}
+        onOpenIntake={handleOpenIntake}
+      />
 
       {/* Some Of My Legal Works / Atuações Práticas Table */}
-      <LegalWorksTable onOpenServiceModal={handleOpenServiceModal} />
+      <LegalWorksTable
+        onOpenServiceModal={handleOpenServiceModal}
+        onOpenIntake={handleOpenIntake}
+      />
 
       {/* How It Works / Methodology */}
       <Methodology />
@@ -167,19 +197,22 @@ export default function App() {
       <Testimonials />
 
       {/* Risk-Free Offer Banner */}
-      <OfferBanner />
+      <OfferBanner onOpenIntake={handleOpenIntake} />
 
       {/* FAQ Objection-Handling */}
       <FAQ />
 
       {/* High-Impact Closing CTA */}
-      <FinalCTA />
+      <FinalCTA onOpenIntake={handleOpenIntake} />
 
       {/* Institutional Legal Footer */}
-      <Footer onOpenServiceModal={handleOpenServiceModal} />
+      <Footer
+        onOpenServiceModal={handleOpenServiceModal}
+        onOpenIntake={handleOpenIntake}
+      />
 
       {/* 24/7 Floating WhatsApp Assistant */}
-      <FloatingWhatsApp />
+      <FloatingWhatsApp onOpenIntake={handleOpenIntake} />
 
       {/* 3-in-1 Dedicated Service Modal Pop-up (With Deep Links & Copyable URL) */}
       <ServiceModal
@@ -187,6 +220,16 @@ export default function App() {
         activeTab={activeTab}
         onClose={handleCloseServiceModal}
         onSelectTab={handleSelectTab}
+        onOpenIntake={handleOpenIntake}
+      />
+
+      {/* Fast Lead Intake & Case Qualification Modal */}
+      <LeadIntakeModal
+        isOpen={intakeOpen}
+        onClose={() => setIntakeOpen(false)}
+        initialService={intakeService}
+        origin={intakeOrigin}
+        lockService={intakeLockService}
       />
 
     </div>

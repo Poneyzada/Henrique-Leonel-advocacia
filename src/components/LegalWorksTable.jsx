@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, Clock, FileCheck, CheckCircle2 } from 'lucide-react';
 
-export default function LegalWorksTable({ onOpenServiceModal }) {
+export default function LegalWorksTable({ onOpenServiceModal, onOpenIntake }) {
   const [filter, setFilter] = useState('todos');
 
   const works = [
@@ -151,7 +151,16 @@ export default function LegalWorksTable({ onOpenServiceModal }) {
             return (
               <div
                 key={idx}
-                onClick={() => onOpenServiceModal(work.id)}
+                onClick={() => {
+                  if (onOpenIntake) {
+                    onOpenIntake({
+                      service: work.id,
+                      origin: `Site Principal - Tabela de Casos: ${work.title}`
+                    });
+                  } else {
+                    onOpenServiceModal(work.id);
+                  }
+                }}
                 className={`group grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 px-4 sm:px-6 py-5 sm:py-6 items-center rounded-2xl transition-all duration-300 cursor-pointer ${
                   isHighlight
                     ? 'bg-[#C9A84C] text-midnight-950 shadow-xl shadow-gold-500/25 scale-[1.01]'

@@ -1,8 +1,15 @@
 import React from 'react';
 import { ArrowUpRight, PhoneCall, Mail, ShieldAlert } from 'lucide-react';
 
-export default function FinalCTA() {
+export default function FinalCTA({ onOpenIntake }) {
   const handleWhatsApp = () => {
+    if (onOpenIntake) {
+      onOpenIntake({
+        service: 'bloqueio',
+        origin: 'Site Principal - Final CTA Rodapé'
+      });
+      return;
+    }
     const msg = encodeURIComponent('Olá Dr. Henrique Leonel! Preciso falar com um advogado agora sobre o meu caso.');
     window.open(`https://wa.me/5571999999999?text=${msg}`, '_blank');
   };

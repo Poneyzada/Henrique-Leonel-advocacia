@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { ArrowUpRight, ChevronLeft, ChevronRight, Lock, Scale, HeartPulse, ShieldAlert } from 'lucide-react';
 
-export default function ServicesCarousel({ onOpenServiceModal }) {
+export default function ServicesCarousel({ onOpenServiceModal, onOpenIntake }) {
   const scrollContainerRef = useRef(null);
 
   const scroll = (direction) => {
@@ -165,18 +165,39 @@ export default function ServicesCarousel({ onOpenServiceModal }) {
                   </div>
 
                   {/* Bottom Action Row with Circle Arrow Button */}
-                  <div className="mt-6 pt-4 border-t border-gray-200/20 flex items-center justify-between">
+                  <div className="mt-6 pt-4 border-t border-gray-200/20 flex items-center justify-between gap-2">
                     <span className={`text-xs font-semibold ${isDark ? 'text-gold-400' : 'text-midnight-900 group-hover:text-gold-600'}`}>
                       Ver Como Atuamos
                     </span>
-                    <div
-                      className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
-                        isDark
-                          ? 'bg-gold-500 text-midnight-950 group-hover:scale-110'
-                          : 'border border-gray-300 text-midnight-900 group-hover:border-gold-500 group-hover:bg-gold-500 group-hover:text-midnight-950'
-                      }`}
-                    >
-                      <ArrowUpRight className="w-4 h-4" />
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (onOpenIntake) {
+                            onOpenIntake({
+                              service: item.id,
+                              origin: `Site Principal - Carrossel ${item.title}`
+                            });
+                          } else {
+                            onOpenServiceModal(item.id);
+                          }
+                        }}
+                        className="px-3 py-1.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-midnight-950 font-bold text-xs flex items-center gap-1 shadow-sm transition-all"
+                        title="Iniciar avaliação jurídica gratuita"
+                      >
+                        <span>Avaliar</span>
+                        <ArrowUpRight className="w-3 h-3" />
+                      </button>
+                      <div
+                        className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                          isDark
+                            ? 'bg-white/10 text-white'
+                            : 'border border-gray-300 text-midnight-900'
+                        }`}
+                      >
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </div>
                     </div>
                   </div>
 

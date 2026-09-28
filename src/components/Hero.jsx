@@ -2,8 +2,15 @@ import React from 'react';
 import { ArrowUpRight, Shield, Award, CheckCircle2, MessageSquare, Star, Clock } from 'lucide-react';
 import ScalesOfJusticeSvg from './ScalesOfJusticeSvg';
 
-export default function Hero({ onOpenServiceModal }) {
-  const handleWhatsApp = (serviceTopic = '') => {
+export default function Hero({ onOpenServiceModal, onOpenIntake }) {
+  const handleWhatsApp = (serviceTopic = '', originName = 'Site Principal - Hero') => {
+    if (onOpenIntake) {
+      onOpenIntake({
+        service: serviceTopic || 'bloqueio',
+        origin: originName
+      });
+      return;
+    }
     let text = 'Olá Dr. Henrique Leonel! Preciso de uma avaliação jurídica gratuita sobre meu caso.';
     if (serviceTopic) {
       text = `Olá Dr. Henrique Leonel! Preciso de ajuda com ${serviceTopic}. Gostaria de uma avaliação gratuita.`;
@@ -89,22 +96,25 @@ export default function Hero({ onOpenServiceModal }) {
             {/* Interactive Service Pop-up Quick Triggers */}
             <div className="flex flex-wrap gap-2 pt-1">
               <button
-                onClick={() => onOpenServiceModal('desbloqueio')}
+                onClick={() => onOpenIntake ? onOpenIntake({ service: 'bloqueio', origin: 'Site Principal - Pílula Hero Desbloqueio' }) : onOpenServiceModal('desbloqueio')}
                 className="px-3 py-1.5 rounded-full text-xs font-medium bg-white/5 hover:bg-gold-500/20 text-gray-200 hover:text-gold-300 border border-white/10 hover:border-gold-500/40 transition-all flex items-center gap-1.5"
+                title="Iniciar avaliação de Desbloqueio de Conta"
               >
                 <span>🔓 Desbloqueio de Contas</span>
                 <ArrowUpRight className="w-3 h-3 text-gold-400" />
               </button>
               <button
-                onClick={() => onOpenServiceModal('plano-saude')}
+                onClick={() => onOpenIntake ? onOpenIntake({ service: 'plano-saude', origin: 'Site Principal - Pílula Hero Revisão Plano' }) : onOpenServiceModal('plano-saude')}
                 className="px-3 py-1.5 rounded-full text-xs font-medium bg-white/5 hover:bg-gold-500/20 text-gray-200 hover:text-gold-300 border border-white/10 hover:border-gold-500/40 transition-all flex items-center gap-1.5"
+                title="Iniciar avaliação de Revisão de Plano de Saúde"
               >
                 <span>🏥 Revisão de Plano</span>
                 <ArrowUpRight className="w-3 h-3 text-gold-400" />
               </button>
               <button
-                onClick={() => onOpenServiceModal('medicamento')}
+                onClick={() => onOpenIntake ? onOpenIntake({ service: 'medicamento', origin: 'Site Principal - Pílula Hero Negativa de Remédio' }) : onOpenServiceModal('medicamento')}
                 className="px-3 py-1.5 rounded-full text-xs font-medium bg-white/5 hover:bg-gold-500/20 text-gray-200 hover:text-gold-300 border border-white/10 hover:border-gold-500/40 transition-all flex items-center gap-1.5"
+                title="Iniciar avaliação de Negativa de Medicamento/Cirurgia"
               >
                 <span>💉 Negativa de Remédio/Cirurgia</span>
                 <ArrowUpRight className="w-3 h-3 text-gold-400" />
@@ -114,7 +124,7 @@ export default function Hero({ onOpenServiceModal }) {
             {/* Primary Action Button */}
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <button
-                onClick={() => handleWhatsApp()}
+                onClick={() => handleWhatsApp('bloqueio', 'Site Principal - Hero CTA Principal')}
                 className="btn-magnetic px-7 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 hover:from-gold-300 hover:to-gold-500 text-midnight-950 font-extrabold text-sm sm:text-base tracking-wide flex items-center justify-center gap-2.5 shadow-xl shadow-gold-500/25 group"
               >
                 <span>Fale agora com um advogado – Avaliação gratuita</span>
@@ -192,7 +202,7 @@ export default function Hero({ onOpenServiceModal }) {
                 Orientação jurídica estratégica com foco em resultados ágeis para seu caso.
               </p>
               <button
-                onClick={() => handleWhatsApp()}
+                onClick={() => handleWhatsApp('bloqueio', 'Site Principal - Card Flutuante 4.9★')}
                 className="w-full py-1.5 px-2.5 rounded-lg bg-gradient-to-r from-gold-400 to-gold-600 text-midnight-950 font-bold text-[11px] flex items-center justify-center gap-1 hover:brightness-110 transition-all"
               >
                 <span>Avaliação Gratuita</span>

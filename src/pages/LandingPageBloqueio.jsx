@@ -2,12 +2,19 @@ import React from 'react';
 import { ArrowUpRight, Shield, Award, CheckCircle2, Clock, PhoneCall, AlertTriangle, Zap, Globe, MessageSquare, HelpCircle, Lock, ChevronDown } from 'lucide-react';
 import ScalesOfJusticeSvg from '../components/ScalesOfJusticeSvg';
 import FloatingWhatsApp from '../components/FloatingWhatsApp';
+import LeadIntakeModal from '../components/LeadIntakeModal';
 
 export default function LandingPageBloqueio() {
+  const [leadModalOpen, setLeadModalOpen] = React.useState(false);
+  const [leadOrigin, setLeadOrigin] = React.useState('LP Tráfego — Bloqueio de Contas');
+
+  const handleOpenLeadModal = (originText = 'LP Tráfego — Bloqueio de Contas') => {
+    setLeadOrigin(originText);
+    setLeadModalOpen(true);
+  };
+
   const handleWhatsApp = (customMsg = '') => {
-    const text = customMsg || 'Olá Dr. Henrique Leonel! Minha conta foi bloqueada e preciso de ajuda jurídica urgente para desbloqueio.';
-    const encoded = encodeURIComponent(text);
-    window.open(`https://wa.me/5571999999999?text=${encoded}`, '_blank');
+    handleOpenLeadModal(`LP Bloqueio — ${customMsg || 'CTA'}`);
   };
 
   const [openFaq, setOpenFaq] = React.useState(0);
@@ -544,7 +551,16 @@ export default function LandingPageBloqueio() {
       </section>
 
       {/* Floating WhatsApp */}
-      <FloatingWhatsApp />
+      <FloatingWhatsApp onOpenIntake={() => handleOpenLeadModal('LP Bloqueio — WhatsApp Flutuante')} />
+
+      {/* Modal de Triagem Pré-WhatsApp */}
+      <LeadIntakeModal
+        isOpen={leadModalOpen}
+        onClose={() => setLeadModalOpen(false)}
+        initialService="bloqueio"
+        origin={leadOrigin}
+        lockService={true}
+      />
 
     </div>
   );

@@ -1,8 +1,15 @@
 import React from 'react';
 import { ArrowUpRight, ShieldCheck, Quote, Scale, CheckCircle2 } from 'lucide-react';
 
-export default function About({ onOpenServiceModal }) {
+export default function About({ onOpenServiceModal, onOpenIntake }) {
   const handleWhatsApp = () => {
+    if (onOpenIntake) {
+      onOpenIntake({
+        service: 'bloqueio',
+        origin: 'Site Principal - Seção Sobre Dr. Henrique'
+      });
+      return;
+    }
     const msg = encodeURIComponent('Olá Dr. Henrique! Gostaria de conversar sobre meu caso e solicitar uma análise jurídica.');
     window.open(`https://wa.me/5571999999999?text=${msg}`, '_blank');
   };
@@ -143,7 +150,16 @@ export default function About({ onOpenServiceModal }) {
             {painPoints.map((item, idx) => (
               <div
                 key={idx}
-                onClick={() => onOpenServiceModal(item.serviceKey)}
+                onClick={() => {
+                  if (onOpenIntake) {
+                    onOpenIntake({
+                      service: item.serviceKey,
+                      origin: `Site Principal - Card Identificação: ${item.badge}`
+                    });
+                  } else {
+                    onOpenServiceModal(item.serviceKey);
+                  }
+                }}
                 className="group relative p-6 rounded-[2rem] bg-white border border-gray-200/80 hover:border-gold-500/40 shadow-card-light hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer"
               >
                 <div>

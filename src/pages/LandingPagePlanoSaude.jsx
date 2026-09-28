@@ -2,12 +2,19 @@ import React, { useState } from 'react';
 import { ArrowUpRight, Shield, Clock, PhoneCall, CheckCircle2, TrendingUp, UserX, FileText, ChevronDown, BarChart2, Globe, HeartHandshake, Lock } from 'lucide-react';
 import ScalesOfJusticeSvg from '../components/ScalesOfJusticeSvg';
 import FloatingWhatsApp from '../components/FloatingWhatsApp';
+import LeadIntakeModal from '../components/LeadIntakeModal';
 
 export default function LandingPagePlanoSaude() {
+  const [leadModalOpen, setLeadModalOpen] = useState(false);
+  const [leadOrigin, setLeadOrigin] = useState('LP Tráfego — Revisão de Plano de Saúde');
+
+  const handleOpenLeadModal = (originText = 'LP Tráfego — Revisão de Plano de Saúde') => {
+    setLeadOrigin(originText);
+    setLeadModalOpen(true);
+  };
+
   const handleWhatsApp = (customMsg = '') => {
-    const text = customMsg || 'Olá Dr. Henrique Leonel! Quero revisar meu plano de saúde – Avaliação gratuita.';
-    const encoded = encodeURIComponent(text);
-    window.open(`https://wa.me/5571999999999?text=${encoded}`, '_blank');
+    handleOpenLeadModal(`LP Plano de Saúde — ${customMsg || 'CTA'}`);
   };
 
   const [openFaq, setOpenFaq] = useState(0);
@@ -491,7 +498,17 @@ export default function LandingPagePlanoSaude() {
         </div>
       </section>
 
-      <FloatingWhatsApp />
+      {/* Floating WhatsApp */}
+      <FloatingWhatsApp onOpenIntake={() => handleOpenLeadModal('LP Plano de Saúde — WhatsApp Flutuante')} />
+
+      {/* Modal de Triagem Pré-WhatsApp */}
+      <LeadIntakeModal
+        isOpen={leadModalOpen}
+        onClose={() => setLeadModalOpen(false)}
+        initialService="plano-saude"
+        origin={leadOrigin}
+        lockService={true}
+      />
 
     </div>
   );

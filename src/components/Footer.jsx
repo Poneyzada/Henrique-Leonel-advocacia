@@ -16,11 +16,11 @@ export default function Footer({ onOpenServiceModal }) {
           {/* Brand Info */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="h-11 w-11 rounded-2xl bg-white/10 border border-gold-500/30 p-1 flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
+              <div className="h-11 w-11 rounded-2xl bg-white/10 border border-gold-500/30 p-1.5 flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
                 <img 
-                  src="/logo-advHenrique-transparente.png" 
+                  src="/logo-semnome.png" 
                   alt="Henrique Leonel" 
-                  className="h-full w-full object-contain scale-[1.7] translate-y-[2px]" 
+                  className="h-full w-full object-contain" 
                 />
               </div>
               <div className="flex flex-col">

@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { MessageCircle, X } from 'lucide-react';
 
-export default function FloatingWhatsApp() {
+export default function FloatingWhatsApp({ onOpenIntake }) {
   const [showTooltip, setShowTooltip] = useState(true);
 
   const handleClick = () => {
+    if (onOpenIntake) {
+      onOpenIntake({
+        service: 'bloqueio',
+        origin: 'WhatsApp Flutuante 24h'
+      });
+      return;
+    }
     const msg = encodeURIComponent('Olá Dr. Henrique! Gostaria de falar com um advogado sobre meu caso.');
     window.open(`https://wa.me/5571999999999?text=${msg}`, '_blank');
   };

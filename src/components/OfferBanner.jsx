@@ -1,8 +1,15 @@
 import React from 'react';
 import { ArrowUpRight, CheckCircle2, Shield, Clock, Globe } from 'lucide-react';
 
-export default function OfferBanner() {
+export default function OfferBanner({ onOpenIntake }) {
   const handleWhatsApp = () => {
+    if (onOpenIntake) {
+      onOpenIntake({
+        service: 'bloqueio',
+        origin: 'Site Principal - Banner Oferta Sem Risco'
+      });
+      return;
+    }
     const msg = encodeURIComponent('Olá Dr. Henrique Leonel! Gostaria de solicitar minha avaliação inicial gratuita.');
     window.open(`https://wa.me/5571999999999?text=${msg}`, '_blank');
   };

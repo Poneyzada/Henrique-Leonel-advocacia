@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, Menu, X, Scale } from 'lucide-react';
 
-export default function Navbar({ onOpenServiceModal }) {
+export default function Navbar({ onOpenServiceModal, onOpenIntake }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -23,6 +23,13 @@ export default function Navbar({ onOpenServiceModal }) {
   ];
 
   const handleWhatsApp = () => {
+    if (onOpenIntake) {
+      onOpenIntake({
+        service: 'bloqueio',
+        origin: 'Site Principal - Menu Navbar'
+      });
+      return;
+    }
     const msg = encodeURIComponent('Olá Dr. Henrique Leonel! Gostaria de agendar uma avaliação gratuita do meu caso.');
     window.open(`https://wa.me/5571999999999?text=${msg}`, '_blank');
   };
@@ -40,9 +47,9 @@ export default function Navbar({ onOpenServiceModal }) {
         <a href="#" className="flex items-center gap-2.5 group">
           <div className="h-9 w-9 rounded-xl bg-white/10 border border-gold-500/30 p-1 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform overflow-hidden shadow-sm">
             <img 
-              src="/logo-advHenrique-transparente.png" 
-              alt="HL" 
-              className="h-full w-full object-contain scale-[1.7] translate-y-[2px]" 
+              src="/logo-semnome.png" 
+              alt="Henrique Leonel Advocacia" 
+              className="h-full w-full object-contain" 
             />
           </div>
           <div className="flex flex-col">

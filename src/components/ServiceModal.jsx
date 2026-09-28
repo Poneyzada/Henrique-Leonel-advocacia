@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, CheckCircle2, ShieldCheck, AlertCircle, ArrowUpRight, Copy, Check, Clock, FileText, PhoneCall, Scale, ExternalLink } from 'lucide-react';
 import { SERVICES_DATA } from '../data/servicesData';
 
-export default function ServiceModal({ isOpen, activeTab, onClose, onSelectTab }) {
+export default function ServiceModal({ isOpen, activeTab, onClose, onSelectTab, onOpenIntake }) {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -33,6 +33,14 @@ export default function ServiceModal({ isOpen, activeTab, onClose, onSelectTab }
   };
 
   const openWhatsApp = () => {
+    if (onOpenIntake) {
+      onClose();
+      onOpenIntake({
+        service: activeTab,
+        origin: `Modal Informativo — ${currentService.tag || 'Serviços'}`
+      });
+      return;
+    }
     const encoded = encodeURIComponent(currentService.whatsappMessage);
     window.open(`https://wa.me/5571999999999?text=${encoded}`, '_blank');
   };
