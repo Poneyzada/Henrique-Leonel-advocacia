@@ -55,7 +55,7 @@ export default function About({ onOpenServiceModal, onOpenIntake }) {
           {/* Left Column: Badge & Stacked Headline */}
           <div className="lg:col-span-5 space-y-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gray-300 bg-white text-xs font-mono font-medium text-gray-700 tracking-wider">
-              <span>ABOUT ME • SOBRE O ESCRITÓRIO</span>
+              <span>HISTÓRIA & PROPÓSITO • SOBRE O ESCRITÓRIO</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold font-sans tracking-tight text-midnight-950 leading-[1.12]">

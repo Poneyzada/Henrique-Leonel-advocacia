@@ -67,10 +67,10 @@ export default function ServicesCarousel({ onOpenServiceModal, onOpenIntake }) {
         <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div className="space-y-3 max-w-xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono font-medium text-gold-400 tracking-wider">
-              <span>MY SERVICES • ÁREAS DE ATUAÇÃO</span>
+              <span>NOSSAS ESPECIALIDADES • ÁREAS DE ATUAÇÃO</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-sans tracking-tight text-white">
-              Trusted <span className="text-[#C9A84C]">Expertise</span>
+              Atuação Jurídica <span className="text-[#C9A84C]">Especializada</span>
             </h2>
           </div>
 
@@ -98,14 +98,14 @@ export default function ServicesCarousel({ onOpenServiceModal, onOpenIntake }) {
           </div>
         </div>
 
-        {/* Cards Carousel with the Behance < DRAG > Badge */}
+        {/* Cards Carousel with < ARRASTE > Badge */}
         <div className="relative">
           
-          {/* Behance signature < DRAG > floating badge */}
+          {/* Badge flutuante ARRASTE */}
           <div className="hidden lg:flex absolute -top-6 left-[58%] -translate-x-1/2 z-20 items-center justify-center">
             <div className="px-3.5 py-1.5 rounded-full bg-white text-midnight-950 text-[11px] font-mono font-extrabold shadow-2xl border border-gray-200 flex items-center gap-1.5 animate-pulse select-none">
               <span>‹</span>
-              <span>DRAG</span>
+              <span>ARRASTE</span>
               <span>›</span>
             </div>
           </div>

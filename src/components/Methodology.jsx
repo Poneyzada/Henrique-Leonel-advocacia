@@ -59,7 +59,7 @@ export default function Methodology() {
         {/* Section Header */}
         <div className="max-w-2xl mb-14 sm:mb-20">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-gold-500/30 text-xs font-mono font-medium text-gold-400 tracking-wider mb-3">
-            <span>THE PROCESS • COMO FUNCIONA</span>
+            <span>PASSO A PASSO • COMO FUNCIONA</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-sans tracking-tight text-white leading-tight">
             Simples, Rápido e <span className="text-[#C9A84C]">Sem Burocracia.</span>

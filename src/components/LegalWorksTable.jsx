@@ -70,10 +70,10 @@ export default function LegalWorksTable({ onOpenServiceModal, onOpenIntake }) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-gray-200">
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-gray-300 bg-white text-xs font-mono font-medium text-gray-700 tracking-wider mb-3">
-              <span>THE WORKS I AM PROUD OF • CASOS DE SUCESSO</span>
+              <span>ATUAÇÕES DE DESTAQUE • CASOS DE SUCESSO</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-sans tracking-tight text-midnight-950">
-              Some Of My <span className="text-[#C9A84C]">Legal Works</span>
+              Casos Reais & <span className="text-[#C9A84C]">Resultados</span>
             </h2>
           </div>
 
@@ -85,7 +85,7 @@ export default function LegalWorksTable({ onOpenServiceModal, onOpenIntake }) {
               onClick={() => onOpenServiceModal('desbloqueio')}
               className="btn-magnetic px-6 py-3 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-300 hover:to-gold-500 text-midnight-950 font-bold text-xs sm:text-sm tracking-wide shadow-md shadow-gold-500/20 flex items-center justify-center gap-1.5 whitespace-nowrap"
             >
-              <span>Ver Pop-ups dos Serviços</span>
+              <span>Ver Detalhes dos Serviços</span>
               <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>
@@ -135,12 +135,12 @@ export default function LegalWorksTable({ onOpenServiceModal, onOpenIntake }) {
           </button>
         </div>
 
-        {/* Table Header (1:1 with Behance Screenshot: Titles, Categories, Date) */}
+        {/* Table Header em Português Claro */}
         <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-3 text-xs font-mono font-bold text-gray-500 uppercase tracking-wider border-b border-gray-200">
-          <div className="col-span-6">Titles (Título do Caso)</div>
-          <div className="col-span-3">Categories (Categoria)</div>
-          <div className="col-span-2">Date (Data / Prazo)</div>
-          <div className="col-span-1 text-right">Ação</div>
+          <div className="col-span-6">Demanda / Descrição do Caso</div>
+          <div className="col-span-3">Área de Atuação</div>
+          <div className="col-span-2">Período / Desfecho</div>
+          <div className="col-span-1 text-right">Avaliação</div>
         </div>
 
         {/* Table Rows (With the signature Gold Highlighted Row from Behance) */}
