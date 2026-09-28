@@ -28,14 +28,14 @@ export default function Hero({ onOpenServiceModal, onOpenIntake }) {
       
       {/* 3D Flow Cinematic Video Background (Desktop & Mobile) */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none flex items-center justify-center">
-        {/* Mobile Video (Vertical 9:16 Aspect - Ajustado para visualização completa da animação) */}
+        {/* Mobile Video (Vertical 9:16 Aspect - Encostando nas laterais com sangria perfeita) */}
         <video
           autoPlay
           loop
           muted
           playsInline
           webkit-playsinline="true"
-          className="w-full h-full object-contain object-center opacity-70 mix-blend-screen scale-[0.88] contrast-110 brightness-110 md:hidden block"
+          className="w-full h-full object-cover object-center opacity-65 mix-blend-screen scale-100 contrast-105 brightness-110 md:hidden block"
         >
           <source src="/hero-mobile.webm" type="video/webm" />
           <source src="/hero-desktop.webm" type="video/webm" />
