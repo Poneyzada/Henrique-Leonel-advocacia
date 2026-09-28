@@ -116,9 +116,9 @@ export default function LeadIntakeModal({
         {/* Header */}
         <div className="relative flex items-center justify-between p-5 sm:p-6 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400">
-              <Sparkles className="w-5 h-5 text-gold-400" />
-            </span>
+            <div className="w-10 h-10 rounded-2xl bg-white/5 border border-gold-500/30 p-1 flex items-center justify-center shrink-0">
+              <img src="/logo-semnome.png" alt="HL" className="h-full w-full object-contain" />
+            </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-mono tracking-wider text-gold-400 uppercase font-semibold">

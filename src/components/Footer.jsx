@@ -15,22 +15,12 @@ export default function Footer({ onOpenServiceModal }) {
           
           {/* Brand Info */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="h-11 w-11 rounded-2xl bg-white/10 border border-gold-500/30 p-1.5 flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
-                <img 
-                  src="/logo-semnome.png" 
-                  alt="Henrique Leonel" 
-                  className="h-full w-full object-contain" 
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-sans font-extrabold text-lg tracking-tight text-white">
-                  Henrique <span className="text-gold-400 font-serif italic font-normal">Leonel</span>
-                </span>
-                <span className="text-[10px] font-mono tracking-widest text-gray-400 uppercase -mt-1">
-                  Advocacia & Consultoria
-                </span>
-              </div>
+            <div className="flex flex-col items-start gap-2">
+              <img 
+                src="/logo-branca.png" 
+                alt="Henrique Leonel Advocacia & Consultoria" 
+                className="h-20 sm:h-24 w-auto object-contain -ml-2 drop-shadow-lg" 
+              />
             </div>
 
             <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-sm">

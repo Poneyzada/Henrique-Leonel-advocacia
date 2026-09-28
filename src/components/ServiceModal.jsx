@@ -62,9 +62,9 @@ export default function ServiceModal({ isOpen, activeTab, onClose, onSelectTab, 
         {/* Modal Topbar */}
         <div className="relative flex items-center justify-between p-5 sm:p-7 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <span className="flex items-center justify-center w-10 h-10 rounded-2xl bg-gold-500/10 border border-gold-500/30 text-gold-400">
-              <Scale className="w-5 h-5" />
-            </span>
+            <div className="flex items-center justify-center w-10 h-10 rounded-2xl bg-white/5 border border-gold-500/30 p-1 shrink-0">
+              <img src="/logo-semnome.png" alt="HL" className="h-full w-full object-contain" />
+            </div>
             <div>
               <span className="text-[11px] font-mono tracking-wider text-gold-400 uppercase font-semibold">
                 Área de Atuação Especializada

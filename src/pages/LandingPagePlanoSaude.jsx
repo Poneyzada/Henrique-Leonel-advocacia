@@ -44,10 +44,11 @@ export default function LandingPagePlanoSaude() {
       {/* Top Banner OAB */}
       <div className="bg-[#060A12] border-b border-gold-500/20 text-white py-2.5 px-4 text-center text-xs font-mono">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2 text-gold-400 font-semibold">
-            <span>⚖️ OAB/BA 60.205</span>
+          <div className="flex items-center gap-2.5">
+            <img src="/logo-semnome.png" alt="HL" className="h-6 w-6 object-contain" />
+            <span className="text-gold-400 font-semibold font-mono text-xs">⚖️ OAB/BA 60.205</span>
             <span className="hidden sm:inline text-gray-500">•</span>
-            <span className="hidden sm:inline text-gray-300">Henrique Leonel Advocacia & Consultoria</span>
+            <span className="hidden sm:inline text-gray-200 font-serif tracking-wider uppercase text-xs">Henrique Leonel Advocacia</span>
           </div>
           <div className="flex items-center gap-4 text-gray-300">
             <span className="flex items-center gap-1.5 text-emerald-400">

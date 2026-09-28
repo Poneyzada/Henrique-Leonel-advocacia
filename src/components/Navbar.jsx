@@ -44,8 +44,8 @@ export default function Navbar({ onOpenServiceModal, onOpenIntake }) {
         }`}
       >
         {/* Official Brand Logo */}
-        <a href="#" className="flex items-center gap-2.5 group">
-          <div className="h-9 w-9 rounded-xl bg-white/10 border border-gold-500/30 p-1 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform overflow-hidden shadow-sm">
+        <a href="#" className="flex items-center gap-3 group">
+          <div className="h-10 w-10 rounded-xl bg-white/5 border border-gold-500/30 p-1 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform overflow-hidden shadow-sm">
             <img 
               src="/logo-semnome.png" 
               alt="Henrique Leonel Advocacia" 
@@ -53,10 +53,10 @@ export default function Navbar({ onOpenServiceModal, onOpenIntake }) {
             />
           </div>
           <div className="flex flex-col">
-            <span className="font-sans font-extrabold text-sm sm:text-base tracking-tight text-white group-hover:text-gold-400 transition-colors">
-              Henrique <span className="text-gold-400 font-serif italic font-normal">Leonel</span>
+            <span className="font-serif tracking-[0.14em] font-bold text-sm sm:text-base text-white group-hover:text-gold-300 transition-colors uppercase leading-tight">
+              Henrique Leonel
             </span>
-            <span className="text-[9px] font-mono tracking-widest text-gray-400 uppercase -mt-0.5 hidden sm:block">
+            <span className="text-[9px] font-mono tracking-[0.2em] text-gray-300 uppercase leading-none hidden sm:block">
               Advocacia & Consultoria
             </span>
           </div>
