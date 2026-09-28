@@ -3,8 +3,6 @@ import { X, CheckCircle2, ShieldCheck, AlertCircle, ArrowUpRight, Copy, Check, C
 import { SERVICES_DATA } from '../data/servicesData';
 
 export default function ServiceModal({ isOpen, activeTab, onClose, onSelectTab, onOpenIntake }) {
-  const [copied, setCopied] = useState(false);
-
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
@@ -24,13 +22,6 @@ export default function ServiceModal({ isOpen, activeTab, onClose, onSelectTab, 
   if (!isOpen) return null;
 
   const currentService = SERVICES_DATA[activeTab] || SERVICES_DATA.desbloqueio;
-
-  const copyDirectLink = () => {
-    const url = `${window.location.origin}${window.location.pathname}#${currentService.hash}`;
-    navigator.clipboard.writeText(url);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
-  };
 
   const openWhatsApp = () => {
     if (onOpenIntake) {
@@ -75,43 +66,25 @@ export default function ServiceModal({ isOpen, activeTab, onClose, onSelectTab, 
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            {/* Dedicated Landing Page Direct Button */}
+          <div className="flex items-center gap-2 shrink-0">
+            {/* Dedicated Landing Page Direct Button (Visível em Mobile e Desktop) */}
             <a
               href={currentService.dedicatedLpUrl}
-              className="hidden sm:flex items-center gap-1.5 px-3 py-2 text-xs font-mono rounded-xl bg-gold-500/20 hover:bg-gold-500/30 text-gold-300 hover:text-white border border-gold-500/40 transition-all duration-200"
+              className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-gold-500/25 to-gold-500/10 hover:from-gold-500/35 hover:to-gold-500/20 text-gold-300 hover:text-white border border-gold-500/40 transition-all duration-200 shadow-sm"
               title="Abrir página dedicada e exclusiva deste serviço"
             >
-              <span>Página Completa</span>
-              <ExternalLink className="w-3.5 h-3.5" />
+              <span className="sm:inline hidden">Página Exclusiva</span>
+              <span className="sm:hidden inline">Ver Página</span>
+              <ExternalLink className="w-3.5 h-3.5 text-gold-400 shrink-0" />
             </a>
-
-            {/* Share / Copy Link Button */}
-            <button
-              onClick={copyDirectLink}
-              title="Copiar link direto para este serviço"
-              className="flex items-center gap-1.5 px-3 py-2 text-xs font-mono rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/10 transition-all duration-200"
-            >
-              {copied ? (
-                <>
-                  <Check className="w-3.5 h-3.5 text-green-400" />
-                  <span className="text-green-400">Copiado!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3.5 h-3.5 text-gold-400" />
-                  <span className="hidden sm:inline">Copiar Link</span>
-                </>
-              )}
-            </button>
 
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white transition-colors"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white transition-colors shrink-0"
               aria-label="Fechar"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>
